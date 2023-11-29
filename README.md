@@ -1,9 +1,2 @@
-# React TV show adviser
-
-## Getting started
-
-```shell
-npm i
-npm start
-```
-# react-tv-show-adviser
+# React TV show adviser (React App project)
+Based on an online course
