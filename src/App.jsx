@@ -16,7 +16,7 @@ export function App() {
   async function fetchPopulars() {
     const populars = await TVShowAPI.fetchPopulars();
     if (populars.length > 0) {
-      setCurrentTVShow(populars[1]);
+      setCurrentTVShow(populars[0]);
     }
   }
 
@@ -24,6 +24,13 @@ export function App() {
     const recommendations = await TVShowAPI.fetchRecommendations(tvShowId);
     if (recommendations.length > 0) {
       setRecommendationList(recommendations.slice(0, 10));
+    }
+  }
+
+  async function searchTVShow(tvShowName) {
+    const searchResponse = await TVShowAPI.fetchByTitle(tvShowName);
+    if (searchResponse.length > 0) {
+      setCurrentTVShow(searchResponse[0]);
     }
   }
 
@@ -36,13 +43,6 @@ export function App() {
       fetchRecommendations(currentTVShow.id);
     }
   }, [currentTVShow]);
-
-  async function searchTVShow(tvShowName) {
-    const searchResponse = await TVShowAPI.fetchByTitle(tvShowName);
-    if (searchResponse.length > 0) {
-      setCurrentTVShow(searchResponse[0]);
-    }
-  }
 
   return (
     <div
